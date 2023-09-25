@@ -63,8 +63,12 @@
         const strLen = (parseInt(str.length));
         if (1 <= strLen && strLen <= 10 && 1 <= num && num <= 5){
             priBox.innerText = str.repeat(num);
+        } else if(strLen >= 10){
+            priBox.innerText = "Error : Too long this string";
+        } else if (num >= 5) {
+            priBox.innerText = "Error : Max number = 5";
         } else {
-            priBox.innerText = "error";
+            priBox.innerText = "Error : Fill the input";
         }
     }
 
