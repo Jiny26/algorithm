@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 반복해서 출력하기</title>
+    <style>
+        .rule{width: 800px; background-color: #eee; padding: 10px; box-sizing: border-box; margin: 0 auto;}
+        .action{width: 800px; margin: 20px auto; border:1px solid #888 ; box-sizing: border-box;}
+
+        form {width: 430px; margin: 20px auto;}
+        input{width: 200px; height: 24px; text-align: center;}
+        #printBtn{width: 420px; display: block; margin: 10px 0;}
+        .printBox{border: 1px solid #ccc; width: 420px; height: 100px; padding: 40px; box-sizing: border-box; margin: 20px 0; text-align: center;}
+    </style>
+</head>
+<body>
+    <div class="action">
+        <form>
+            <input type="text"
+            required
+            placeholder="string을 입력해주세요."
+            maxlength="10"
+            class="strBox">
+            <!-- 제한 사항 처리 -->
+    
+            <input type="number"
+            required
+            placeholder="반복할 횟수를 선택해주세요."
+            max="5" 
+            class="numBox">
+            <!-- 제한 사항 처리 -->
+    
+            <input type="submit" value="Print" id="printBtn">
+            <div class="printBox">-</div>
+        </form>
+    </div>
+    <div class="rule">
+        <ul><h4>문제설명</h4>
+            <li>문자열 str과 정수 n이 주어집니다.</li>
+            <li>str이 n번 반복된 문자열을 만들어 출력하는 코드를 작성해 보세요.</li>
+        </ul>
+        <ul><h4>제한사항</h4>
+            <li>1 ≤ str의 길이 ≤ 10</li>
+            <li>1 ≤ n ≤ 5</li>
+        </ul>
+        <ul><h4>입출력 예</h4>
+            <li>입력 #1 : string 5</li>
+            <li>출력 #1 : stringstringstringstringstring</li>
+        </ul>
+    </div>
+</body>
+<script>
+
+    //input(strBox)에 string(str)을 받는다
+    //input(numBox)에 숫자(n)를 받는다 -> number로 변환
+    //window나 console에 string을 n번 반복한다
+    const strBox = document.querySelector(".strBox");
+    const numBox = document.querySelector(".numBox");
+    const priBox = document.querySelector(".printBox")
+    const printBtn = document.querySelector("#printBtn");
+
+    function printhandle(e){
+        e.preventDefault();
+        const str = strBox.value;
+        const num = (parseInt(numBox.value));
+        priBox.innerText = str.repeat(num);
+    }
+
+    printBtn.addEventListener("click", printhandle);
+</script>
+</html>
