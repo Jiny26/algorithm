@@ -3,63 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>대소문자 바꿔서 출력하기</title>
+    <title>홀짝 구분하기</title>
     <style>
-        body{background-color: #888;}
-        .rule{width: 600px; background-color: #919191; padding: 10px; box-sizing: border-box; margin: 0 auto;}
+        .rule{width: 600px; background-color: #eee; padding: 10px; box-sizing: border-box; margin: 0 auto;}
         .action{width: 600px; margin: 20px auto; border:1px solid #888 ; box-sizing: border-box;}
 
         .action h4, .action form {text-align: center;}
         .action form input {height: 20px;}
-        .transformBox{border: 1px solid #ccc; width: 420px; height: 100px; margin: 10px auto; padding: 40px; box-sizing: border-box; text-align: center;}
+        .Box{border: 1px solid #ccc; width: 420px; height: 100px; margin: 10px auto; padding: 40px; box-sizing: border-box; text-align: center;}
     </style>
 </head>
 <body>
     <div class="action">
-        <h4>대소문자 변환기</h4>
+        <h4>홀짝 구분하기</h4>
         <form>
-            <input type="text"
-            placeholder="알파벳을 입력해주세요"
-            class="inputTransform">
-            <input type="submit" value="변환" class="submitTransform">
-            <div class="transformBox">-</div>
+            <input type="number"
+            placeholder=""
+            class="input"
+            >
+            <input type="submit"
+            value="Go!"
+            class="btn">
+            <div class="Box">-</div>
         </form>
     </div>
     <div class="rule">
         <ul><h4>문제설명</h4>
-            <li>영어 알파벳으로 이루어진 문자열 str이 주어집니다.</li>
-            <li>각 알파벳을 대문자는 소문자로 소문자는 대문자로 변환해서 출력하는 코드를 작성해 보세요.</li>
+            <li>자연수 n이 입력으로 주어졌을 때 </li>
+            <li>만약 n이 짝수이면 "n is even"을, 홀수이면 "n is odd"를 출력하는 코드를 작성해 보세요.</li>
         </ul>
         <ul><h4>제한사항</h4>
-            <li>1 ≤ str의 길이 ≤ 20</li>
-            <li>str은 알파벳으로 이루어진 문자열입니다.</li>
+            <li>1 ≤ n ≤ 1,000</li>
         </ul>
         <ul><h4>입출력 예</h4>
-            <li>입력 #1 : aBcDeFg</li>
-            <li>출력 #1 : AbCdEfG</li>
+            <li>입력 #1 : 100<br>
+                출력 #1 : 100 is even</li>
+            <li>입력 #1 : 1<br>
+                출력 #1 : 1 is odd</li>
         </ul>
     </div>
-
-
     <script>
-        const transInput = document.querySelector(".inputTransform")
-        const transBtn = document.querySelector(".submitTransform");
-        const transformBox = document.querySelector(".transformBox");
-        
-            function alphabetTransformHandle(e) {
-                e.preventDefault();
-                // 입력값을 받아서
-                const alpValue = transInput.value;
-                //console.log(alpValue);
-                //[...스프레드 연산자]로 쪼개서
-                //.map메서드로 각각
-                let str = [...alpValue].map(
-                //?:로 조건문으로 대문자 확인 후 변환
-                    (i) => i === i.toUpperCase() ? i.toLowerCase() : i.toUpperCase());
-                    //console.log(str);
-                    transformBox.innerText = str.join("");
-            }
-        transBtn.addEventListener("click", alphabetTransformHandle);
+        const input = document.querySelector(".input")
+        const btn = document.querySelector(".btn");
+        const Box = document.querySelector(".Box");
+
+        function solution(e){
+            e.preventDefault();
+            const num = input.value;
+            Box.innerHTML = `${num} is ${num % 2 ? "홀" : "짝"}`
+        }
+        btn.addEventListener("click", solution);
     </script>
 </body>
 </html>

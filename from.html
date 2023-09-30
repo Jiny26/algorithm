@@ -8,11 +8,22 @@
         .rule{width: 600px; background-color: #eee; padding: 10px; box-sizing: border-box; margin: 0 auto;}
         .action{width: 600px; margin: 20px auto; border:1px solid #888 ; box-sizing: border-box;}
 
+        .action h4, .action form {text-align: center;}
+        .action form input {height: 20px;}
+        .Box{border: 1px solid #ccc; width: 420px; height: 100px; margin: 10px auto; padding: 40px; box-sizing: border-box; text-align: center;}
     </style>
 </head>
 <body>
     <div class="action">
-
+        <form>
+            <input type="text"
+            placeholder=""
+            class="input">
+            <input type="submit"
+            value="Go!"
+            class="btn">
+            <div class="Box">-</div>
+        </form>
     </div>
     <div class="rule">
         <ul><h4>문제설명</h4>
@@ -28,5 +39,10 @@
             <li></li>
         </ul>
     </div>
+    <script>
+        const input = document.querySelector(".input")
+        const btn = document.querySelector(".btn");
+        const Box = document.querySelector(".Box");
+    </script>
 </body>
 </html>
