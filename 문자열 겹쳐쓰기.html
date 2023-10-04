@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 겹쳐쓰기</title>
+    <style>
+        .rule {
+            width: 600px;
+            background-color: #eee;
+            padding: 10px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        .action {
+            width: 600px;
+            margin: 20px auto;
+            border: 1px solid #888;
+            box-sizing: border-box;
+        }
+
+        .action form input{
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        .action h4,
+        .action form {
+            text-align: center;
+        }
+
+        .action form input {
+            height: 20px;
+        }
+
+        .rule h4 {
+            margin-bottom: 10px;
+        }
+
+        .Box {
+            border: 1px solid #ccc;
+            width: 420px;
+            height: 100px;
+            margin: 10px auto;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="action">
+        <h4>문자열 겹쳐쓰기</h4>
+        <form>
+            <input type="text"
+            placeholder="please write the text"
+            class="input_my">
+            <input type="text"
+            placeholder="write the over write text"
+            class="input_over">
+            <input type="number"
+            placeholder="trasform "
+            class="input_n">
+            <input type="submit" value="Go!" class="btn">
+            <div class="Box">-</div>
+        </form>
+    </div>
+    <div class="rule">
+        <ul>
+            <h4>문제설명</h4>
+            <li>문자열 my_string, overwrite_string과 정수 s가 주어집니다.</li>
+            <li>문자열 my_string의 인덱스 s부터 overwrite_string의 길이만큼을 문자열 overwrite_string으로 바꾼 문자열을 return 하는 solution 함수를 작성해
+                주세요.</li>
+        </ul>
+        <ul>
+            <h4>제한사항</h4>
+            <li>my_string와 overwrite_string은 숫자와 알파벳으로 이루어져 있습니다.</li>
+            <li>1 ≤ overwrite_string의 길이 ≤ my_string의 길이 ≤ 1,000</li>
+            <li>0 ≤ s ≤ my_string의 길이 - overwrite_string의 길이</li>
+        </ul>
+        <ul>
+            <h4>입출력 예</h4>
+            <li>my_string // overwrite_string // s // result</li>
+            <li>"He11oWor1d" // "lloWorl" // 2 // "HelloWorld"</li>
+            <li>"Program29b8UYP" // "merS123" // 7 // "ProgrammerS123"</li>
+        </ul>
+        <ul>
+            <h4>입출력 예 설명</h4>
+            <li>예제 1번의 my_string에서 인덱스 2부터 overwrite_string의 길이만큼에 해당하는 부분은 "11oWor1"이고 이를 "lloWorl"로 바꾼 "HelloWorld"를
+                return 합니다.</li>
+            <li>예제 2번의 my_string에서 인덱스 7부터 overwrite_string의 길이만큼에 해당하는 부분은 "29b8UYP"이고 이를 "merS123"로 바꾼
+                "ProgrammerS123"를 return 합니다.</li>
+        </ul>
+    </div>
+
+    <script> 
+        const my_string = document.querySelector(".input_my");
+        const overwrite_string = document.querySelector(".input_over");
+        const s = document.querySelector(".input_n");
+
+        const btn = document.querySelector(".btn");
+        const Box = document.querySelector(".Box");
+
+        function solution(e){
+            e.preventDefault();
+            const my = my_string.value;
+            const over = overwrite_string.value;
+            const num = s.value;
+            const mystr = [...my];
+
+            mystr.splice(num, over.length, over)
+            
+            //splice() 메서드는 배열의 기존 요소를 삭제 또는 교체하거나 새 요소를 추가하여 배열의 내용을 변경합니다.
+            //array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+            console.log(mystr) // -> ["H","e","lloWorl","d"]
+            return Box.innerHTML = mystr.join("");
+        }
+        btn.addEventListener("click", solution);
+    </script>
+</body>
+
+</html>

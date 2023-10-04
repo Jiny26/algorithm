@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 섞기</title>
+    <style>
+        .rule {
+            width: 600px;
+            background-color: #eee;
+            padding: 10px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        .action {
+            width: 600px;
+            margin: 20px auto;
+            border: 1px solid #888;
+            box-sizing: border-box;
+        }
+
+        .action h4,
+        .action form {
+            text-align: center;
+        }
+
+        .action form input {
+            height: 20px;
+        }
+
+        .Box {
+            border: 1px solid #ccc;
+            width: 420px;
+            height: 100px;
+            margin: 10px auto;
+            padding: 40px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="action">
+        <h4>문자열 섞기</h4>
+        <form>
+            <input type="text" placeholder="" class="input_1"> +
+            <input type="text" placeholder="" class="input_2">
+            <input type="submit" value="Go!" class="btn">
+            <div class="Box">-</div>
+        </form>
+    </div>
+    <div class="rule">
+        <ul>
+            <h4>문제설명</h4>
+            <li>길이가 같은 두 문자열 str1과 str2가 주어집니다.</li>
+            <li>두 문자열의 각 문자가 앞에서부터 서로 번갈아가면서 한 번씩 등장하는 문자열을 만들어 return 하는 solution 함수를 완성해 주세요.</li>
+        </ul>
+        <ul>
+            <h4>제한사항</h4>
+            <li>1 ≤ str1의 길이 = str2의 길이 ≤ 10</li>
+            <li>str1과 str2는 알파벳 소문자로 이루어진 문자열입니다.</li>
+        </ul>
+        <ul>
+            <h4>입출력 예</h4>
+            <li>str1 : "aaaaa"</li>
+            <li>str2 : "bbbbb"</li>
+            <li>result : "ababababab"</li>
+        </ul>
+    </div>
+    <script>
+        const string1 = document.querySelector(".input_1")
+        const string2 = document.querySelector(".input_2")
+        const btn = document.querySelector(".btn");
+        const Box = document.querySelector(".Box");
+
+        function solution(e) {
+            e.preventDefault();
+            const str1 = string1.value;
+            const str2 = string2.value;
+            if (str1.length >= 1 && str1.length <= 10 && str2.length === str1.length) {
+                const a = [...str1].map((a, b) => a += str2[b]);
+                //[...스프레드 연산자]로 배열을 쪼개서
+                //map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다.
+
+                console.log(a)
+                // [...str1]                           -> ['b','n','n']
+                // [...str1].map((a,b) => a =+b)       -> ['b0','n1','n2']
+                // [...str1].map((a,b) => a += str2[b] -> ['ba','na','na']
+                return Box.innerHTML = a.join("")
+            } else {
+                return Box.innerHTML = "두 알파벳의 길이는 10보다 작고, 같아야합니다"
+            }
+        }
+        btn.addEventListener("click", solution);
+        //Agrtmi ohr //loih ss ad
+    </script>
+</body>
+
+</html>
