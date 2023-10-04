@@ -58,8 +58,17 @@
                     (i) => i === i.toUpperCase() ? i.toLowerCase() : i.toUpperCase());
                     //console.log(str);
                     transformBox.innerText = str.join("");
+                    //조인은 조금 느림
+                    //문자열 다룰 때는 for 공부하기
+                    //innerText는 데이터를 뽑아올 때 주로 사용
+                    //innerHTML는 데이터를 입력할 때 주로 사용
+
             }
         transBtn.addEventListener("click", alphabetTransformHandle);
+
+        //(s of str) s를 str만들 돌리겠다 str.length 대신사용
+        // 실무에서는 버그가 많아서 사용 하지 않음
+        // for if를 주로 사용
     </script>
 </body>
 </html>
