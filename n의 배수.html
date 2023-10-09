@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n의 배수</title>
+    <style>
+        .rule{width: 600px; background-color: #eee; padding: 10px; box-sizing: border-box; margin: 0 auto;}
+        .action{width: 600px; margin: 20px auto; border:1px solid #888 ; box-sizing: border-box;}
+
+        .action h4, .action form {text-align: center;}
+        .action form input {height: 20px;}
+        .Box{border: 1px solid #ccc; width: 420px; height: 100px; margin: 10px auto; padding: 40px; box-sizing: border-box; text-align: center;}
+    </style>
+</head>
+<body>
+    <div class="action">
+        <h4>n의 배수</h4>
+        <form>
+            <input type="number"
+            placeholder="Number"
+            class="input_num">
+
+            <input type="number"
+            placeholder="Number"
+            class="input_n">
+            <input type="submit"
+            value="multiple"
+            class="btn">
+            <div class="Box">-</div>
+        </form>
+    </div>
+    <div class="rule">
+        <ul><h4>문제설명</h4>
+            <li>정수 num과 n이 매개 변수로 주어질 때, num이 n의 배수이면 1을 return n의 배수가 아니라면 0을 return하도록 solution 함수를 완성해주세요.</li>
+        </ul>
+        <ul><h4>제한사항</h4>
+            <li>2 ≤ num ≤ 100</li>
+            <li>2 ≤ n ≤ 9</li>
+        </ul>
+        <ul><h4>입출력 예</h4>
+            <li>num // n // result</li>
+            <li>98 // 2 // 1</li>
+            <li>34 // 3 // 0</li>
+        </ul>
+        <ul><h4>입출력 예 설명</h4>
+            <li>98은 2의 배수이므로 1을 return합니다.</li>
+            <li>32는 3의 배수가 아니므로 0을 return합니다.</li>
+        </ul>
+    </div>
+    <script>
+        const inputNum = document.querySelector(".input_num")
+        const inputN = document.querySelector(".input_n")
+        const btn = document.querySelector(".btn");
+        const Box = document.querySelector(".Box");
+
+        function solution(e) {
+            e.preventDefault();
+            const num = inputNum.value;
+            const n = inputN.value;
+
+            if (num >= 2 && num <= 100 && n >= 2 && n <= 9) {
+                const sol = (num%n) === 0 ? `1 (배수)` : `0 (배수아님)`;
+                //나머지가 0이면 배수 !
+                return Box.innerHTML = sol;
+            } else {
+                Box.innerHTML = "The Number is too big";
+            }
+        }
+
+        btn.addEventListener("click", solution);
+
+//const result = (x >= 2 && x <= 100 && y >= 2 && y <= 9) ? `${(x % y === 0) ? '1 (배수)' : '0 (배수아님)'}` : 'The Number is too big';
+    </script>
+</body>
+</html>
